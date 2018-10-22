@@ -1,0 +1,7 @@
+C:\Users\Coding\OneDrive\Coding\Bonus19\Bonus19\bin\Debug\Bonus19.exe.config
+C:\Users\Coding\OneDrive\Coding\Bonus19\Bonus19\bin\Debug\Bonus19.exe
+C:\Users\Coding\OneDrive\Coding\Bonus19\Bonus19\bin\Debug\Bonus19.pdb
+C:\Users\Coding\OneDrive\Coding\Bonus19\Bonus19\obj\Debug\Bonus19.csprojAssemblyReference.cache
+C:\Users\Coding\OneDrive\Coding\Bonus19\Bonus19\obj\Debug\Bonus19.csproj.CoreCompileInputs.cache
+C:\Users\Coding\OneDrive\Coding\Bonus19\Bonus19\obj\Debug\Bonus19.exe
+C:\Users\Coding\OneDrive\Coding\Bonus19\Bonus19\obj\Debug\Bonus19.pdb
