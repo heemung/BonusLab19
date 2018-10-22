@@ -9,32 +9,44 @@ namespace Bonus19
 {
     class Program
     {
+        static List<string> userCart = new List<string>();
+        static List<double> userCartPrice = new List<double>();
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Guenther's Market\n\n Menu:");
+            string userSelect;
+            bool contYN = true;
+
+            Console.WriteLine("Welcome to Guenther's Market\n");
+            Console.WriteLine("{0,15}", "Menu");
 
             int numberOfItems;
             Dictionary<string, double> menuOfItems = new Dictionary<string, double>();
             AddingItems(menuOfItems);
             numberOfItems = menuOfItems.Count;
-            ArrayList[] storeItems = new ArrayList[numberOfItems];
-            ArrayList[] storePrice = new ArrayList[numberOfItems];
-
-            Console.WriteLine("{0,-20}{1,0}", "Item", "Menu");
-            Console.WriteLine("==============================");
-
-
-            for (int i = 0; i <  storeItems.Length; i++) 
+            ArrayList storeItems = new ArrayList();
+            ArrayList storePrice = new ArrayList();
+            foreach(KeyValuePair<string,double> d in menuOfItems)
             {
-                Console.WriteLine("{0,-20}",storeItems[i]);
-                Console.WriteLine(storePrice[i]);
+                storeItems.Add(d.Key.ToString());
+                storePrice.Add(d.Value.ToString());
             }
-            /*
-            foreach (var d in menuOfItems) //keyValuePair <string, double>
+
+            while (contYN)
             {
-                Console.WriteLine(d);
+                Console.WriteLine("{0,-20}{1,0}", "Item", "Price");
+                Console.WriteLine("==============================");
+
+
+                for (int i = 0; i < storeItems.Count; i++)
+                {
+                    Console.WriteLine("{0,-20} ${1,0}", storeItems[i], storePrice[i]);
+                }
+
+
+                Console.Write("What item would you like to order? ");
+                userSelect = Console.ReadLine();
+                contYN = AddingToCart(userSelect, menuOfItems);
             }
-            */
             Console.ReadLine();
 
         }
@@ -52,6 +64,26 @@ namespace Bonus19
 
         }
         */
+        public static bool AddingToCart(string selection, Dictionary<string, 
+            double> menuOfItems)
+        {
+            while(true)
+                {
+                if (menuOfItems.ContainsKey(selection))
+                {
+                    userCart.Add(selection);
+                    userCartPrice.Add(menuOfItems[selection]);
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("That isn't on the menu! Please choose " +
+                        "something on the menu.");
+                    return false;
+                }
+            }
+        }
+
         public static void AddingItems(Dictionary<string, double> menuOfItems)
         {
             menuOfItems.Add("apple", 0.99);
