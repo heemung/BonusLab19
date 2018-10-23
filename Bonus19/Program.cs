@@ -50,23 +50,55 @@ namespace Bonus19
                 Console.Write("Would you like to order anything else? ");
                 contYN = Continue(Console.ReadLine(), contYN);
             }
+            OrderComplete();
             Console.ReadLine();
 
         }
-        /*
-        public int AverageItems()
+        
+        public static double AverageItems()
         {
+            double avg = 0;
+            foreach(double d in userCartPrice)
+            {
+                avg += d;
+            }
+            avg = avg / userCartPrice.Count;
+            avg = Math.Round(avg, 2);
+            Console.WriteLine("The average price of all items is: ${0}", avg);
+            return avg;
+        }
+        
+        public static double HighestCost()
+        {
+            double tempDoub = 0;
+
+            foreach(double d in userCartPrice)
+            {
+                if (tempDoub > d)
+                {
+                    tempDoub = d;
+                }
+            }
+            Console.WriteLine("The highest cost item is ${0}", tempDoub);
+            return tempDoub;
+        
+        }
+        public static double LowestCost()
+        {
+            double tempDoub = HighestCost();
+
+            foreach (double d in userCartPrice)
+            {
+                if (tempDoub < d)
+                {
+                    tempDoub = d;
+                }
+            }
+            Console.WriteLine("The highest cost item is ${0}", tempDoub);
+            return tempDoub;
 
         }
-        public int HighestCost()
-        {
 
-        }
-        public int LowestCost()
-        {
-
-        }
-        */
         public static void AddingToCart(string selection, Dictionary<string, 
             double> menuOfItems)
         {
@@ -76,14 +108,14 @@ namespace Bonus19
                 {
                     userCart.Add(selection);
                     userCartPrice.Add(menuOfItems[selection]);
-                    Console.WriteLine("Adding {0} to card at {1}.",userCart[userCart.Count -1] ,
+                    Console.WriteLine("Adding {0} to card at {1}.\n",userCart[userCart.Count -1] ,
                         userCartPrice[userCartPrice.Count - 1]);
                     break;
                 }
                 else
                 {
-                    Console.WriteLine("Sorry that item isn't one the menu. Please choose " +
-                        "something on the menu.");
+                    Console.WriteLine("Sorry that item isn't on the menu. Please choose " +
+                        "something on the menu.\n");
                     break;
                 }
             }
@@ -113,6 +145,18 @@ namespace Bonus19
             }
             Console.WriteLine("Something didn't return");
             return false;
+        }
+
+        public static void OrderComplete()
+        {
+            Console.Clear();
+            Console.WriteLine("Thank you for your order! \nHere's what you got");
+
+            for(int i = 0; i < userCart.Count; i++)
+            {
+                Console.WriteLine("{0,-20}{1,0}",userCart[i],userCartPrice[i]);
+            }
+            AverageItems();
         }
 
         public static void AddingItems(Dictionary<string, double> menuOfItems)
