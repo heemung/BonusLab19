@@ -43,7 +43,7 @@ namespace Bonus19
                 }
 
 
-                Console.Write("What item would you like to order? ");
+                Console.Write("\nWhat item would you like to order? ");
                 userSelect = Console.ReadLine();
                 AddingToCart(userSelect, menuOfItems);
 
@@ -76,13 +76,15 @@ namespace Bonus19
                 {
                     userCart.Add(selection);
                     userCartPrice.Add(menuOfItems[selection]);
+                    Console.WriteLine("Adding {0} to card at {1}.",userCart[userCart.Count -1] ,
+                        userCartPrice[userCartPrice.Count - 1]);
                     break;
- 
                 }
                 else
                 {
-                    Console.WriteLine("That isn't on the menu! Please choose " +
+                    Console.WriteLine("Sorry that item isn't one the menu. Please choose " +
                         "something on the menu.");
+                    break;
                 }
             }
         }
