@@ -45,7 +45,10 @@ namespace Bonus19
 
                 Console.Write("What item would you like to order? ");
                 userSelect = Console.ReadLine();
-                contYN = AddingToCart(userSelect, menuOfItems);
+                AddingToCart(userSelect, menuOfItems);
+
+                Console.Write("Would you like to order anything else? ");
+                contYN = Continue(Console.ReadLine(), contYN);
             }
             Console.ReadLine();
 
@@ -64,7 +67,7 @@ namespace Bonus19
 
         }
         */
-        public static bool AddingToCart(string selection, Dictionary<string, 
+        public static void AddingToCart(string selection, Dictionary<string, 
             double> menuOfItems)
         {
             while(true)
@@ -73,13 +76,13 @@ namespace Bonus19
                 {
                     userCart.Add(selection);
                     userCartPrice.Add(menuOfItems[selection]);
-                    return true;
+                    break;
+ 
                 }
                 else
                 {
                     Console.WriteLine("That isn't on the menu! Please choose " +
                         "something on the menu.");
-                    return false;
                 }
             }
         }
