@@ -64,37 +64,43 @@ namespace Bonus19
             }
             avg = avg / userCartPrice.Count;
             avg = Math.Round(avg, 2);
-            Console.WriteLine("The average price of all items is: ${0}", avg);
+            Console.WriteLine("The average price of all items in cart is: ${0}", avg);
             return avg;
         }
         
         public static double HighestCost()
         {
             double tempDoub = 0;
+            int index =0;
 
             foreach(double d in userCartPrice)
             {
-                if (tempDoub > d)
+                if (tempDoub < d)
                 {
                     tempDoub = d;
                 }
+
             }
-            Console.WriteLine("The highest cost item is ${0}", tempDoub);
+            index = userCartPrice.IndexOf(tempDoub);
+            Console.WriteLine("The highest cost item is {0} at ${1}", userCart[index], tempDoub);
             return tempDoub;
         
         }
         public static double LowestCost()
         {
             double tempDoub = HighestCost();
+            int index = 0;
 
             foreach (double d in userCartPrice)
             {
-                if (tempDoub < d)
+                if (tempDoub > d)
                 {
                     tempDoub = d;
                 }
+
             }
-            Console.WriteLine("The highest cost item is ${0}", tempDoub);
+            index = userCartPrice.IndexOf(tempDoub);
+            Console.WriteLine("The lowest cost item is {0} at ${1}", userCart[index], tempDoub);
             return tempDoub;
 
         }
@@ -157,6 +163,8 @@ namespace Bonus19
                 Console.WriteLine("{0,-20}{1,0}",userCart[i],userCartPrice[i]);
             }
             AverageItems();
+            HighestCost();
+            LowestCost();
         }
 
         public static void AddingItems(Dictionary<string, double> menuOfItems)
