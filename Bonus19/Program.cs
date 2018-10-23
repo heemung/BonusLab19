@@ -83,6 +83,32 @@ namespace Bonus19
                 }
             }
         }
+        public static bool Continue(string userCont, bool temp)
+        {
+            temp = true;
+            while (temp)
+            {
+                userCont.ToLower();
+                if (userCont == "yes")
+                {
+                    temp = false;
+                    return true;
+                }
+                else if (userCont == "no")
+                {
+                    temp = false;
+                    return false;
+                }
+                else
+                {
+                    Console.Write("That is not a valid input. Please type 'yes' or 'no'");
+                    userCont = Console.ReadLine();
+                    
+                }
+            }
+            Console.WriteLine("Something didn't return");
+            return false;
+        }
 
         public static void AddingItems(Dictionary<string, double> menuOfItems)
         {
